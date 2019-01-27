@@ -12,12 +12,15 @@ class ViewController: UIViewController {
     @IBOutlet var temperatureRange: TemperatureRange!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var temperaturePicker: UIPickerView!
+    @IBOutlet weak var temperatureSegmentedControlOutlent: UISegmentedControl!
     
     var isCelcius = true
         
     let unitConverter = UnitConverter()
     
-    let userDefaultsLastRowKey = "defaultCelciusPickerRow"
+    let userDefaultsLastRowKey = "defaultPickerRow"
+    let userDefaultsLastOption = "defaultSegment"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,24 +34,12 @@ class ViewController: UIViewController {
         //default pickerView
         pickerView(temperaturePicker, didSelectRow: defaultPickerRow, inComponent: 0)
         
+        //default segment
+        let defaultSegment = initialSegment()
+        temperatureSegmentedControlOutlent.selectedSegmentIndex = defaultSegment
+        
     }
     
-    //UIsegmentControl
-    @IBAction func temperatureSegmentedControl(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex
-        {
-        case 0:
-            isCelcius = false;
-            temperaturePicker.reloadAllComponents()
-            displayConvertedTemperatureForRow(row: initialPickerRow())
-        case 1:
-            isCelcius = true;
-            temperaturePicker.reloadAllComponents()
-            displayConvertedTemperatureForRow(row: initialPickerRow())
-        default:
-            break;
-        }
-    }
     
     //calculate saved row or choose default row
     func initialPickerRow() -> Int {
@@ -57,10 +48,26 @@ class ViewController: UIViewController {
         }
         return temperaturePicker.numberOfRows(inComponent: 0) / 2
     }
-
+    
+    //save selected row
     func saveSelectedRow(row: Int) {
         let defaults = UserDefaults.standard
         defaults.set(row, forKey: userDefaultsLastRowKey)
+        defaults.synchronize()
+    }
+    
+    //choose default segment
+    func initialSegment() -> Int {
+        if let savedOption = UserDefaults.standard.object(forKey: userDefaultsLastOption) as? Int{
+            return savedOption
+        }
+        return temperaturePicker.numberOfRows(inComponent: 0) / 2
+    }
+    
+    //save selected segment
+    func saveSelectedSegment(option: Int) {
+        let defaults = UserDefaults.standard
+        defaults.set(option, forKey: userDefaultsLastOption)
         defaults.synchronize()
     }
     
@@ -73,7 +80,25 @@ class ViewController: UIViewController {
         }
     }
     
+    //UIsegmentControl
+    @IBAction func temperatureSegmentedControl(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex
+        {
+        case 0:
+            isCelcius = false;
+        case 1:
+            isCelcius = true;
+        default:
+            break;
+        }
+        temperaturePicker.reloadAllComponents()
+        displayConvertedTemperatureForRow(row: initialPickerRow())
+        saveSelectedSegment(option: sender.selectedSegmentIndex)
+    }
+    
 }
+
+
 
 extension ViewController: UIPickerViewDelegate {
     

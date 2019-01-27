@@ -60,6 +60,7 @@
                         <outlet property="temperatureLabel" destination="xxm-ko-aec" id="CQZ-kr-B9U"/>
                         <outlet property="temperaturePicker" destination="Qlt-fw-sRR" id="PoI-DO-eIg"/>
                         <outlet property="temperatureRange" destination="Y9b-QI-5hM" id="rXd-HH-b5x"/>
+                        <outlet property="temperatureSegmentedControlOutlent" destination="Okj-YO-2Qf" id="xDZ-yT-TfX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
