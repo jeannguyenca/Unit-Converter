@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,15 +13,55 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Unit_Converter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°F" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxm-ko-aec">
+                                <rect key="frame" x="172" y="100" width="31" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qlt-fw-sRR">
+                                <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="z2b-b9-6JJ"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y9b-QI-5hM" id="yJQ-OC-kXz"/>
+                                </connections>
+                            </pickerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Okj-YO-2Qf">
+                                <rect key="frame" x="127" y="158" width="121" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Okj-YO-2Qf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RSb-ro-oSy"/>
+                            <constraint firstItem="xxm-ko-aec" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rtf-gJ-6u4"/>
+                            <constraint firstItem="Qlt-fw-sRR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VD9-Eg-nYc"/>
+                            <constraint firstItem="Qlt-fw-sRR" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="bCg-2U-7Me"/>
+                            <constraint firstItem="Okj-YO-2Qf" firstAttribute="bottom" secondItem="xxm-ko-aec" secondAttribute="bottom" constant="50" id="dWw-4s-LoR"/>
+                            <constraint firstItem="xxm-ko-aec" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="v9g-z7-9so"/>
+                            <constraint firstItem="Qlt-fw-sRR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vnO-wG-mop"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="temperatureLabel" destination="xxm-ko-aec" id="CQZ-kr-B9U"/>
+                        <outlet property="temperaturePicker" destination="Qlt-fw-sRR" id="PoI-DO-eIg"/>
+                        <outlet property="temperatureRange" destination="Y9b-QI-5hM" id="rXd-HH-b5x"/>
+                        <outlet property="temperatureSegmentedControl" destination="Okj-YO-2Qf" id="ncu-gB-d9B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="Y9b-QI-5hM" userLabel="TemperatureRange" customClass="TemperatureRange" customModule="Unit_Converter" customModuleProvider="target"/>
             </objects>
         </scene>
     </scenes>

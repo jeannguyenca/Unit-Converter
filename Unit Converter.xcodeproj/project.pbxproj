@@ -12,6 +12,8 @@
 		64B5DD7121F693F0000F4643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64B5DD6F21F693F0000F4643 /* Main.storyboard */; };
 		64B5DD7321F693F2000F4643 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64B5DD7221F693F2000F4643 /* Assets.xcassets */; };
 		64B5DD7621F693F2000F4643 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64B5DD7421F693F2000F4643 /* LaunchScreen.storyboard */; };
+		64B5DD7E21F69F28000F4643 /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B5DD7D21F69F27000F4643 /* UnitConverter.swift */; };
+		64B5DD8221F6A367000F4643 /* TemperatureRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B5DD8121F6A367000F4643 /* TemperatureRange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		64B5DD7221F693F2000F4643 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64B5DD7521F693F2000F4643 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64B5DD7721F693F2000F4643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64B5DD7D21F69F27000F4643 /* UnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverter.swift; sourceTree = "<group>"; };
+		64B5DD8121F6A367000F4643 /* TemperatureRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureRange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 		64B5DD6A21F693F0000F4643 /* Unit Converter */ = {
 			isa = PBXGroup;
 			children = (
+				64B5DD8021F6A334000F4643 /* ViewModels */,
+				64B5DD7F21F6A32B000F4643 /* Models */,
 				64B5DD6B21F693F0000F4643 /* AppDelegate.swift */,
 				64B5DD6D21F693F0000F4643 /* ViewController.swift */,
 				64B5DD6F21F693F0000F4643 /* Main.storyboard */,
@@ -62,6 +68,22 @@
 				64B5DD7721F693F2000F4643 /* Info.plist */,
 			);
 			path = "Unit Converter";
+			sourceTree = "<group>";
+		};
+		64B5DD7F21F6A32B000F4643 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				64B5DD7D21F69F27000F4643 /* UnitConverter.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		64B5DD8021F6A334000F4643 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				64B5DD8121F6A367000F4643 /* TemperatureRange.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +157,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64B5DD8221F6A367000F4643 /* TemperatureRange.swift in Sources */,
+				64B5DD7E21F69F28000F4643 /* UnitConverter.swift in Sources */,
 				64B5DD6E21F693F0000F4643 /* ViewController.swift in Sources */,
 				64B5DD6C21F693F0000F4643 /* AppDelegate.swift in Sources */,
 			);
