@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var temperaturePicker: UIPickerView!
     
-    @IBOutlet weak var temperatureSegmentedControl: UISegmentedControl!
-    
+    var isCelcius = true
+        
     let unitConverter = UnitConverter()
     
     let userDefaultsLastRowKey = "defaultCelciusPickerRow"
@@ -31,7 +31,23 @@ class ViewController: UIViewController {
         //default pickerView
         pickerView(temperaturePicker, didSelectRow: defaultPickerRow, inComponent: 0)
         
-//        temperaturePicker.reloadAllComponents()
+    }
+    
+    //UIsegmentControl
+    @IBAction func temperatureSegmentedControl(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex
+        {
+        case 0:
+            isCelcius = false;
+            temperaturePicker.reloadAllComponents()
+            displayConvertedTemperatureForRow(row: initialPickerRow())
+        case 1:
+            isCelcius = true;
+            temperaturePicker.reloadAllComponents()
+            displayConvertedTemperatureForRow(row: initialPickerRow())
+        default:
+            break;
+        }
     }
     
     //calculate saved row or choose default row
@@ -49,8 +65,12 @@ class ViewController: UIViewController {
     }
     
     func displayConvertedTemperatureForRow(row: Int) {
-        let celciusValue = temperatureRange.values[row]
-        temperatureLabel.text = "\(unitConverter.degreesFarenheit(degreesCelcius: celciusValue))°F"
+        let value = temperatureRange.values[row]
+        if(isCelcius) {
+            temperatureLabel.text = "\(unitConverter.degreesFarenheit(degreesCelcius: value))°F"
+        } else {
+            temperatureLabel.text = "\(unitConverter.degreesCelcius(degreesFarenheit: value))°C"
+        }
     }
     
 }
@@ -58,7 +78,11 @@ class ViewController: UIViewController {
 extension ViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(temperatureRange.values[row])°C"
+        if (isCelcius) {
+            return "\(temperatureRange.values[row])°C"
+        } else {
+            return "\(temperatureRange.values[row])°F"
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
